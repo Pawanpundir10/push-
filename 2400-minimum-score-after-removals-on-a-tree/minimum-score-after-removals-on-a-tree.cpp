@@ -27,9 +27,9 @@ public:
         return maxXor - minXor;
     }
     int minimumScore(vector<int>& nums, vector<vector<int>>& edges) {
-        int n = nums.size(); //Total number of nodes
+        int n = nums.size(); 
 
-        unordered_map<int, vector<int>> adj; //adjacency list
+        unordered_map<int, vector<int>> adj; 
         for(auto &edge : edges) {
             int u = edge[0];
             int v = edge[1];
@@ -45,7 +45,7 @@ public:
 
         int timer = 0;
 
-        //root = 0
+  
         dfs(0, -1, subtreeXor, inTime, outTime, timer, nums, adj);
 
         int result = INT_MAX;
