@@ -1,15 +1,17 @@
 class Solution {
 public:
     int getSum(int a, int b) {
-        while(b!=0)
-        {
-            int sum_without_carry=a^b;
-            int carry=(a&b)<<1;
 
-            a=sum_without_carry;
-            b=carry;
-        }
+        return a+b;
+        // while(b!=0)
+        // {
+        //     int sum_without_carry=a^b;
+        //     int carry=(a&b)<<1;
 
-        return a;
+        //     a=sum_without_carry;
+        //     b=carry;
+        // }
+
+        // return a;
     }
 };
