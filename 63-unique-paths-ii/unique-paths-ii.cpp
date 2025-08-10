@@ -1,38 +1,60 @@
 class Solution {
 public:
     int m,n;
-    int dp[101][101];
-    int solve(int i,int j,vector<vector<int>>& Grid)
-    {
-        if(i<0 || i>=m || j<0 || j>=n || Grid[i][j]==1)
+    int uniquePathsWithObstacles(vector<vector<int>>& grid) {
+        int m=grid.size();
+        int n=grid[0].size();
+        vector<vector<int>>dp(m,vector<int>(n,0));
+        for(int i=0;i<n;i++)
         {
-            return 0;
+            if(grid[0][i]==1)
+            {
+                dp[0][i]=0;
+            }
+            else if(i>=1 && grid[0][i-1]==1)
+            {
+                dp[0][i]=0;
+                grid[0][i]=1;
+            }
+            else
+            {
+                dp[0][i]=1;
+            }
         }
-        if(i==m-1 && j==n-1)
+        for(int i=0;i<m;i++)
         {
-            return 1;
+            if(grid[i][0]==1)
+            {
+                dp[i][0]=0;
+            }
+            else if(i>=1 && grid[i-1][0]==1)
+            {
+                dp[i][0]=0;
+                grid[i][0]=1;
+            }
+            else
+            {
+                dp[i][0]=1;
+            }
         }
 
-        if(dp[i][j]!=-1)
+        for(int i=1;i<m;i++)
         {
-            return dp[i][j];
+            for(int j=1;j<n;j++)
+            {
+                if(grid[i][j]==1)
+                {
+                    dp[i][j]=0;
+                }
+                else
+                {
+                dp[i][j]=dp[i][j-1]+dp[i-1][j];
+                }
+            }
         }
 
-
-        int right=solve(i,j+1,Grid);
-        int down=solve(i+1,j,Grid);
-
-        return dp[i][j]=right+down;
-    }
+        return dp[m-1][n-1];
 
 
-
-    int uniquePathsWithObstacles(vector<vector<int>>& Grid) {
-        m=Grid.size();
-        n=Grid[0].size();
-        memset(dp,-1,sizeof(dp));
-
-        return solve(0,0,Grid);
-        
     }
 };
