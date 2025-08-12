@@ -13,7 +13,7 @@ public:
         {
             return 0;
         }
-        if (num > n) return 0; 
+        // if (num > n) return 0; 
 
         int currpowervalue=pow(num,x);
         if(currpowervalue>n)
