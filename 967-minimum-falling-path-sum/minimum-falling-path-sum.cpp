@@ -2,8 +2,6 @@ class Solution {
 public:
     int minFallingPathSum(vector<vector<int>>& matrix) {
         int n=matrix.size();
-        vector<vector<int>>dp=matrix;
-
         for(int i=1;i<n;i++)
         {
             for(int j=0;j<n;j++)
@@ -13,21 +11,21 @@ public:
 
                if(j-1>=0)
                {
-                 a=dp[i-1][j-1];
+                 a=matrix[i-1][j-1];
                }
                if(j+1<n)
                {
-                b=dp[i-1][j+1];
+                b=matrix[i-1][j+1];
                }
                
-            dp[i][j]=dp[i][j]+ min({dp[i-1][j],a,b});
+            matrix[i][j]=matrix[i][j]+ min({matrix[i-1][j],a,b});
             }
         }
         int result=INT_MAX;
         int lastrow=n-1;
         for(int j=0;j<n;j++)
         {
-           result=min(result,dp[lastrow][j]);
+           result=min(result,matrix[lastrow][j]);
         }
 
         return result;
