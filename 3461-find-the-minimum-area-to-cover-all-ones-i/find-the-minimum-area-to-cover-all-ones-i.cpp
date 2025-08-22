@@ -20,9 +20,6 @@ public:
               }
            }
         }
-
-        if(bottom==-1) return 0;
-        
-        return (bottom-top+1)*(right-left+1);
+        return bottom==-1?0:(bottom-top+1)*(right-left+1);
     }
 };
