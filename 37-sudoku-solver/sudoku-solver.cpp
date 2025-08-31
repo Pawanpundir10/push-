@@ -25,11 +25,10 @@ public:
         return true;
     }
 
-    //2^9
-    //O(9 ^ 81)
+    
     bool solve(vector<vector<char>>& board) {
-        for(int i = 0; i < 9; i++) { //O(9)
-            for(int j = 0; j < 9; j++) { //O(9)
+        for(int i = 0; i < 9; i++) { 
+            for(int j = 0; j < 9; j++) { 
                 if(board[i][j] == '.') {
 
                     for(char d = '1'; d <= '9'; d++) { 
