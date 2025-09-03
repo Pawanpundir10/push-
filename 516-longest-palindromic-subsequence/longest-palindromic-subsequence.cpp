@@ -4,7 +4,7 @@ public:
    {
     int n=s.length();
     int m=s1.length();
-    vector<vector<int>>dp(n+1,vector<int>(m+1));
+    int dp[1001][1001];
     for(int i=0;i<=n;i++)
     {
         for(int j=0;j<=m;j++)
