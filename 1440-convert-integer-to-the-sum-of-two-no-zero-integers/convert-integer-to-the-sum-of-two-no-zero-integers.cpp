@@ -13,22 +13,18 @@ bool has0(int x)
 
 
     vector<int> getNoZeroIntegers(int n) {
-
-        vector<int>res;
         int a=1;
         while(a<n)
         {
            int b=n-a;
            if(!has0(a) && !has0(b))
            {
-            res.push_back(a);
-            res.push_back(b);
-            break;
+            return {a,b};
            }
            a++;
         }
 
-        return res;
+        return {};
     }
 
 };
