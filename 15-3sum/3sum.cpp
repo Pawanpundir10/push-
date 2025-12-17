@@ -7,28 +7,32 @@ public:
     {
         while(i<j)
         {
-        if(nums[i]+nums[j]>target)
-        {
-            j--;
-        }
-        else if(nums[i]+nums[j]<target)
-        {
-            i++;
-        }
-        else
-        {
-            while(i<j && nums[i]==nums[i+1]) i++;
-            while(i<j && nums[j]==nums[j-1]) j--;
-            res.push_back({-target,nums[i],nums[j]});
-            i++;
-            j--;
+            if(nums[i]+nums[j]>target)
+            {
+                j--;
+            }
+            else if(nums[i]+nums[j]<target)
+            {
+                i++;
+            }
+            else
+            {
+                while(i<j && nums[i]==nums[i+1])
+                {
+                    i++;
+                }
+                while(i<j && nums[j]==nums[j-1])
+                {
+                  j--;
+                }
+                res.push_back({-target,nums[i],nums[j]});
+                i++;
+                j--;
+            }
         }
     }
-    }
 
-
-
-
+    
     vector<vector<int>> threeSum(vector<int>& nums) {
         int n=nums.size();
         sort(nums.begin(),nums.end());
@@ -38,12 +42,14 @@ public:
         }
         for(int i=0;i<n;i++)
         {
-           if(i>0 && nums[i]==nums[i-1]) continue;
-           int n1=nums[i];
-           int target=-n1;
+            if(i>0 && nums[i]==nums[i-1]) continue;
 
-           twosum(nums,target,i+1,n-1);
+            int n1=nums[i];
+            int target=-n1;
+
+            twosum(nums,target,i+1,n-1);
         }
+       
 
         return res;
     }
